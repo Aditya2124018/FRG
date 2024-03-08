@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">      
+    <style>
+        table,th,td,tr{
+    border: 1px solid black;
+    border-collapse:collapse;
+}
+.text{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.userPAN{
+    display: flex;
+    
+    justify-content: end;
+}
+.userName{
+    display: flex;
+    
+    justify-content: end;
+}
+@media print{
+.userName,.userPAN{
+    margin-left: 200px;
+}
+    #container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+      
+    }
+ 
+  #table{
+    width: 400px;
+    
+  }
+}
+    </style>
+</head>
+<body>
+    <h1 class="text-center">Financial Report Year <span id="span-year"></span></h1>
+    <div id="container" >
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 col-sm-4">
+                <div class="text">
+                    <h3 class="userName">Name: <span id="userName"></span></h3>
+                <h3 class="userPAN">PAN: <span id="userPAN"></span></h3>
+                </div>
+                <div id="table" class="table table-striped table-primary text-center"></div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+    <script>
+        let span_year = document.getElementById("span-year");
+        const date = new Date();
+span_year.innerHTML = date.getFullYear();
+        document.getElementById("userName").innerText = localStorage.getItem("name");
+        document.getElementById("userPAN").innerText = localStorage.getItem("PAN");
+        document.getElementById("table").innerHTML = localStorage.getItem("table");
+        
+    </script>
+        
+        <script src="./js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
